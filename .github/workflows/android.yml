@@ -36,7 +36,7 @@ jobs:
         run: |
           git config --local user.name "apotox"
           git config --local user.email "apotox@users.noreply.github.com"
-          git --no-pager shortlog -sn
+          git log
       - name: get-contributors
         run: |
           date +%s > ./meta/contributors.txt
