@@ -31,7 +31,7 @@ jobs:
   #  needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: get-contributors
         run: echo $(git --no-pager shortlog -sn) > ./meta/contributors.txt
       - name: commit changes
@@ -40,5 +40,4 @@ jobs:
           git config --local user.email "saphidev@gmail.com"
           git add ./meta/contributors.txt
           git commit -m 'update contributors'
-          git fetch origin master
-          git push origin HEAD:master
+          git push
