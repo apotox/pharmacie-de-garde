@@ -24,8 +24,6 @@ jobs:
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-8`" >> $GITHUB_ENV
       - name: Checkout the code
         uses: actions/checkout@v2
-      - name: Build the app
-        run: ./gradlew assembleProductionRelease "-Pbranch=${GITHUB_REF##*/}" "-Pshortsha=${SHORT_SHA}"
       - name: create the Bundle
         run: ./gradlew bundleProductionRelease "-Pbranch=${GITHUB_REF##*/}" "-Pshortsha=${SHORT_SHA}"
       - name: Sign app Bundle
@@ -57,6 +55,8 @@ jobs:
           name: aab-release.aab
       - name: 'Echo download path'
         run: echo ${{steps.download.outputs.download-path}}
+      - name: 'Echo files'
+        run: ls ${{steps.download.outputs.download-path}}
       - name: Upload Android Release to Play Store
         uses: r0adkll/upload-google-play@v1
         with:
