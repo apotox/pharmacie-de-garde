@@ -40,7 +40,7 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v1
         with:
-          name: aab-release.aab
+          name: aab-release
           path: ${{steps.sign_app_bundle.outputs.signedReleaseFile}}
 
   uploadApp:
@@ -52,17 +52,13 @@ jobs:
       - uses: actions/download-artifact@v2
         id: download
         with:
-          name: aab-release.aab
-      - name: 'Echo download path'
-        run: echo ${{steps.download.outputs.download-path}}
-      - name: 'Echo files'
-        run: ls ${{steps.download.outputs.download-path}}
+          name: aab-release
       - name: Upload Android Release to Play Store
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT }}
           packageName: com.saphidev.pharmaciedegarde
-          releaseFiles: ${{steps.download.outputs.download-path}}/aab-release.aab
+          releaseFiles: ${{steps.download.outputs.download-path}}/app-production-release.aab
           track: internal
 
   updateContributorsList:
