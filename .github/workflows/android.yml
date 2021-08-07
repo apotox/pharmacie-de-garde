@@ -32,12 +32,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: get-contributors
-        run: echo $(git --no-pager shortlog -sn) > ./meta/contributors.txt
       - name: commit changes
         run: |
           git config --local user.name "apotox"
           git config --local user.email "saphidev@gmail.com"
+          git --no-pager shortlog -sn
+      - name: get-contributors
+        run: |
+          echo $(git --no-pager shortlog -sn) > ./meta/contributors.txt
           git add ./meta/contributors.txt
           git commit -m 'update contributors'
           git push
