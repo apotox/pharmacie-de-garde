@@ -40,7 +40,7 @@ jobs:
         with:
           name: apk-production-release
           path: ${{steps.sign_apk.outputs.signedReleaseFile}}
-      - name: Bundle the app
+      - name: create the Bundle
         run: ./gradlew bundleProductionRelease "-Pbranch=${GITHUB_REF##*/}" "-Pshortsha=${SHORT_SHA}"
       - name: Sign app Bundle
         uses: r0adkll/sign-android-release@v1
@@ -54,9 +54,9 @@ jobs:
         env:
           BUILD_TOOLS_VERSION: "30.0.1"
       - name: Upload Android Release to Play Store
-        uses: apotox/upload-google-play@v2.0.3
+        uses: r0adkll/upload-google-play@v1
         with:
-          serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_UPLAOD_2 }}
+          serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT }}
           packageName: com.saphidev.pharmaciedegarde
           releaseFiles: ${{steps.sign_app_bundle.outputs.signedReleaseFile}}
           track: internal
