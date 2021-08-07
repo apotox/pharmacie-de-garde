@@ -1,13 +1,18 @@
 package com.saphidev.pharmaciedegarde.adapters
 
-import android.widget.ImageView
-import com.saphidev.pharmaciedegarde.data.Pharmacy
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.saphidev.pharmaciedegarde.R
+import com.saphidev.pharmaciedegarde.data.Pharmacy
+import kotlin.coroutines.coroutineContext
+
 
 class PharmaciesAdapter(private var dataSet: Array<Pharmacy>) :
     RecyclerView.Adapter<PharmaciesAdapter.ViewHolder>() {
@@ -36,16 +41,14 @@ class PharmaciesAdapter(private var dataSet: Array<Pharmacy>) :
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
-//        viewHolder.textCity.text = dataSet[position].wilaya_name_ascii
-//        viewHolder.textDaira.text = dataSet[position].daira_name_ascii
-//        viewHolder.textCommune.text = dataSet[position].commune_name_ascii
-//
         viewHolder.pharmacyName.text = dataSet[position].name
+        viewHolder.pharmacyHoraire.text = "${dataSet[position].hourFrom} - ${dataSet[position].hourTo}"
         viewHolder.itemView.setOnClickListener {
-
+            val uri =
+                "http://maps.google.com/maps?daddr=" + dataSet[position].location
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+            intent.setPackage("com.google.android.apps.maps");
+            startActivity(it.context,intent,null)
         }
     }
 
