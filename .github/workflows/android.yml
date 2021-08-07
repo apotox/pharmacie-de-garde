@@ -2,24 +2,41 @@ name: Android CI
 
 on:
   push:
+    paths-ignore:
+      - 'meta/**'
     branches: [ master ]
   pull_request:
+    paths-ignore:
+      - 'meta/**'
     branches: [ master ]
 
 jobs:
-  build:
+  # build:
 
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: set up JDK 11
+  #     uses: actions/setup-java@v2
+  #     with:
+  #       java-version: '11'
+  #       distribution: 'adopt'
+
+  #   - name: Grant execute permission for gradlew
+  #     run: chmod +x gradlew
+  #   - name: Build with Gradle
+  #     run: ./gradlew build
+  updateContributorsList:
+  #  needs: build
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: set up JDK 11
-      uses: actions/setup-java@v2
-      with:
-        java-version: '11'
-        distribution: 'adopt'
-
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-    - name: Build with Gradle
-      run: ./gradlew build
+      - uses: actions/checkout@v1
+      - name: get-contributors
+        run: echo $(git --no-pager shortlog -sn) > ./meta/contributors.txt
+      - name: commit changes
+        run: |
+          git add .
+          git commit -m 'update contributors'
+          git fetch origin master
+          git push origin HEAD:master
