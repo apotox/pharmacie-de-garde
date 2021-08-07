@@ -26,8 +26,6 @@ android {
         applicationId "com.saphidev.pharmaciedegarde"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
 
         buildConfigField("String","BRANCH", project.hasProperty("branch") ? "\"${project.branch}\"" :"\"staging\"")
         buildConfigField("String","SHORTSHA", project.hasProperty("shortsha") ? "\"${project.shortsha}\"":"\"abcdef\"")
