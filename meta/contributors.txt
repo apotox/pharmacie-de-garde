@@ -1,4 +1,26 @@
-1628345525
+1628345679
+    26	saphidev
+     8	apotox
+     2	Safi eddine
+commit 54ec92dfe6fe9c4f88706b47bf1e46efa6dcbf4d
+Merge: c4a0b55 72c8cae
+Author: saphidev <saphidev@gmail.com>
+Date:   Sat Aug 7 15:14:25 2021 +0100
+
+    Merge branch 'master' of github.com:apotox/pharmacie-de-garde
+
+commit c4a0b5591138d41380c6b995a8146dbc32d1f525
+Author: saphidev <saphidev@gmail.com>
+Date:   Sat Aug 7 15:14:16 2021 +0100
+
+    git shortlog HEAD
+
+commit 72c8cae14a2d020ce422e0197685c57c78f84f82
+Author: apotox <apotox@users.noreply.github.com>
+Date:   Sat Aug 7 14:12:05 2021 +0000
+
+    update contributors ✌️
+
 commit 077937d37c24991b3620895fd82791ce32b5ac53
 Merge: cef5f22 56c90c6
 Author: saphidev <saphidev@gmail.com>
