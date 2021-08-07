@@ -36,7 +36,8 @@ jobs:
         run: echo $(git --no-pager shortlog -sn) > ./meta/contributors.txt
       - name: commit changes
         run: |
-          git add .
+          git config --local user.name "apotox"
+          git add ./meta/contributors.txt
           git commit -m 'update contributors'
           git fetch origin master
           git push origin HEAD:master
