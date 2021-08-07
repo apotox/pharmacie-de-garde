@@ -3,7 +3,6 @@ package com.saphidev.pharmaciedegarde.vm
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.saphidev.pharmaciedegarde.MainActivity
 import com.saphidev.pharmaciedegarde.data.Pharmacy
 import com.saphidev.pharmaciedegarde.repositories.PharmaciesRepo
 import kotlinx.coroutines.launch
@@ -23,11 +22,9 @@ class MainViewModel():ViewModel(){
     }
 
     fun getTodayPharmacies(id: Int){
-        val config = MainActivity.configurationRepo?.getConfiguration() ?: return
 
-        if(config.cityId == 0) return
 
-        if(System.currentTimeMillis() - lastRequest < 10000 && lastResult!=null && config.cityId == lastCityId){
+        if(System.currentTimeMillis() - lastRequest < 10000 && lastResult!=null && id == lastCityId){
             println("use cache")
             result.value = lastResult
             return
@@ -39,7 +36,7 @@ class MainViewModel():ViewModel(){
             loading.value = false
             lastResult = response
             lastRequest = System.currentTimeMillis()
-            lastCityId = config.cityId
+            lastCityId = id
             result.value = response
         }
     }
