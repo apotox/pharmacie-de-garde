@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">pharmacie de garde</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">search view</string>
+    <string name="home_fragment_greating">Pharmacie De Garde </string>
+    <string name="search_your_city">search your city</string>
+</resources>
