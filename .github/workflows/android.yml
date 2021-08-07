@@ -54,7 +54,7 @@ jobs:
       - uses: actions/download-artifact@v2
         id: download
         with:
-          name: aab-release
+          name: aab-release.aab
       - name: 'Echo download path'
         run: echo ${{steps.download.outputs.download-path}}
       - name: Upload Android Release to Play Store
@@ -62,7 +62,7 @@ jobs:
         with:
           serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT }}
           packageName: com.saphidev.pharmaciedegarde
-          releaseFiles: ${{steps.download.outputs.download-path}}/app-production-release.aab
+          releaseFiles: ${{steps.download.outputs.download-path}}/aab-release.aab
           track: internal
 
   updateContributorsList:
