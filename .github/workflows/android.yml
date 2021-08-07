@@ -42,7 +42,7 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v1
         with:
-          name: aab-release
+          name: aab-release.aab
           path: ${{steps.sign_app_bundle.outputs.signedReleaseFile}}
 
   uploadApp:
