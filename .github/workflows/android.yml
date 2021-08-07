@@ -11,24 +11,24 @@ on:
     branches: [ master ]
 
 jobs:
-  # build:
+  build:
 
-  #   runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: set up JDK 11
-  #     uses: actions/setup-java@v2
-  #     with:
-  #       java-version: '11'
-  #       distribution: 'adopt'
+    steps:
+    - uses: actions/checkout@v2
+    - name: set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
 
-  #   - name: Grant execute permission for gradlew
-  #     run: chmod +x gradlew
-  #   - name: Build with Gradle
-  #     run: ./gradlew build
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+    - name: Build with Gradle
+      run: ./gradlew build
   updateContributorsList:
-  #  needs: build
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -43,6 +43,5 @@ jobs:
         run: |
           date +%s > ./meta/contributors.txt
           git shortlog -sn HEAD >> ./meta/contributors.txt
-          git log >> ./meta/contributors.txt
           git commit -am 'update contributors ✌️'
           git push
