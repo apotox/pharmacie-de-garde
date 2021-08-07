@@ -61,7 +61,7 @@ jobs:
           releaseFiles: ${{steps.sign_app_bundle.outputs.signedReleaseFile}}
           track: internal
   updateContributorsList:
-    needs: [buildProductionRelease]
+    needs: buildProductionRelease
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
