@@ -32,6 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: commit changes
         run: |
           git config --local user.name "apotox"
@@ -40,7 +42,6 @@ jobs:
       - name: get-contributors
         run: |
           date +%s > ./meta/contributors.txt
-          git fetch
-          git log >> ./meta/contributors.txt
+          git git --no-pager shortlog -sn >> ./meta/contributors.txt
           git commit -am 'update contributors'
           git push
