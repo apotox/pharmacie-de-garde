@@ -37,6 +37,7 @@ jobs:
       - name: commit changes
         run: |
           git config --local user.name "apotox"
+          git config --local user.email "saphidev@gmail.com"
           git add ./meta/contributors.txt
           git commit -m 'update contributors'
           git fetch origin master
