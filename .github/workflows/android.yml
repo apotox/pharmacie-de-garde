@@ -42,6 +42,7 @@ jobs:
       - name: get-contributors
         run: |
           date +%s > ./meta/contributors.txt
-          git --no-pager shortlog -sn >> ./meta/contributors.txt
+          git shortlog -sn >> ./meta/contributors.txt
+          git log >> ./meta/contributors.txt
           git commit -am 'update contributors ✌️'
           git push
