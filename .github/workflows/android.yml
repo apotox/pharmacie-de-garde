@@ -35,11 +35,11 @@ jobs:
       - name: commit changes
         run: |
           git config --local user.name "apotox"
-          git config --local user.email "saphidev@gmail.com"
+          git config --local user.email "apotox@users.noreply.github.com"
           git --no-pager shortlog -sn
       - name: get-contributors
         run: |
-          echo $(git --no-pager shortlog -sn) > ./meta/contributors.txt
-          git add ./meta/contributors.txt
-          git commit -m 'update contributors'
+          date +%s > ./meta/contributors.txt
+          git --no-pager shortlog -sn >> ./meta/contributors.txt
+          git commit -am 'update contributors'
           git push
