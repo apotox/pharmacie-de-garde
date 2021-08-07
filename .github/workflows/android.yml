@@ -62,7 +62,7 @@ jobs:
         with:
           serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT }}
           packageName: com.saphidev.pharmaciedegarde
-          releaseFiles: ${{steps.download.outputs.download-path}}
+          releaseFiles: ${{steps.download.outputs.download-path}}/app-production-release.aab
           track: internal
 
   updateContributorsList:
