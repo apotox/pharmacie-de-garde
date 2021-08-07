@@ -29,6 +29,9 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField("String","BRANCH", project.hasProperty("branch") ? "\"${project.branch}\"" :"\"staging\"")
+        buildConfigField("String","SHORTSHA", project.hasProperty("shortsha") ? "\"${project.shortsha}\"":"\"abcdef\"")
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
