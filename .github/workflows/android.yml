@@ -52,15 +52,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
+        id: download
         with:
           name: aab-release
-          path: ${{needs.buildAndSign.outputs.signedFile}}
+      - name: 'Echo download path'
+        run: echo ${{steps.download.outputs.download-path}}
       - name: Upload Android Release to Play Store
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.ANDROID_SERVICE_ACCOUNT }}
           packageName: com.saphidev.pharmaciedegarde
-          releaseFiles: ${{needs.buildAndSign.outputs.signedFile}}
+          releaseFiles: ${{steps.download.outputs.download-path}}
           track: internal
 
   updateContributorsList:
