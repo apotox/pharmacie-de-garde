@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit
 
 interface ApiInterface {
 
-    @GET("{id}/gardes/today")
+    @GET("gardes/{id}/today")
     suspend fun getPharmacies(@Path("id") id: Int) : List<Pharmacy>
 
     companion object {
