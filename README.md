@@ -8,4 +8,4 @@ android app provide all-night drugstore infos in algerian cities
 - do your changes
 - open a PR , one of the reviewers will review you PR.
 - since your PR being accpeted. a github action will build and deploy the new version of this app to Google Play
-- your name will be added automaticly to the the contributors files [#meta/contributors.txt](#meta/contributors.txt)
+- your name will be added automatically to the the contributors files [#meta/contributors.txt](#meta/contributors.txt)
